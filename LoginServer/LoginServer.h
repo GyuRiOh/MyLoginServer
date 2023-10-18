@@ -8,7 +8,7 @@
 #include "../RedisJob.h"
 #include "LoginClient.h"
 
-namespace server_baby
+namespace MyNetwork
 {
     class LoginServer_SC_Proxy;
     class LoginServer_CS_Stub;

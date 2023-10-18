@@ -2,7 +2,7 @@
 #include "NetRoot/NetServer/NetSessionID.h"
 #include "Player/Player.h"
 
-namespace server_baby
+namespace MyNetwork
 {
 	struct RedisJob
 	{

@@ -8,7 +8,7 @@
 #pragma comment (lib, "cpp_redis.lib")
 #pragma comment (lib, "tacopie.lib")
 
-namespace server_baby
+namespace MyNetwork
 {
 	class LoginServer_CS_Stub final : public NetStub
 	{

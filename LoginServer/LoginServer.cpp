@@ -8,10 +8,10 @@
 #include "../NetRoot/Common/Parser.h"
 #include <cpp_redis/cpp_redis>
 
-server_baby::LoginServer::LoginServer()
+MyNetwork::LoginServer::LoginServer()
 {
-	proxy_ = new server_baby::LoginServer_SC_Proxy(this);
-	stub_ = new server_baby::LoginServer_CS_Stub(this);
+	proxy_ = new MyNetwork::LoginServer_SC_Proxy(this);
+	stub_ = new MyNetwork::LoginServer_CS_Stub(this);
 
     RegisterStub(stub_);
 
@@ -44,23 +44,23 @@ server_baby::LoginServer::LoginServer()
     lanClient_.Start(IP, relayPort);
 }
 
-server_baby::LoginServer::~LoginServer()
+MyNetwork::LoginServer::~LoginServer()
 {
 	delete proxy_;
 	delete stub_;
 	delete dbConnector_;
 }
 
-bool server_baby::LoginServer::OnConnectionRequest(const SOCKADDR_IN* const addr){ return true; }
-void server_baby::LoginServer::OnClientJoin(NetSessionID sessionID) {}
-void server_baby::LoginServer::OnClientLeave(NetSessionID sessionID) {}
-void server_baby::LoginServer::OnWorkerThreadBegin(){}
-void server_baby::LoginServer::OnWorkerThreadEnd(){}
-void server_baby::LoginServer::OnError(int errCode, WCHAR* err){}
-void server_baby::LoginServer::OnRecv(NetPacketSet* packetQ) {}
-void server_baby::LoginServer::OnSend(NetSessionID sessionID, int sendSize){}
+bool MyNetwork::LoginServer::OnConnectionRequest(const SOCKADDR_IN* const addr){ return true; }
+void MyNetwork::LoginServer::OnClientJoin(NetSessionID sessionID) {}
+void MyNetwork::LoginServer::OnClientLeave(NetSessionID sessionID) {}
+void MyNetwork::LoginServer::OnWorkerThreadBegin(){}
+void MyNetwork::LoginServer::OnWorkerThreadEnd(){}
+void MyNetwork::LoginServer::OnError(int errCode, WCHAR* err){}
+void MyNetwork::LoginServer::OnRecv(NetPacketSet* packetQ) {}
+void MyNetwork::LoginServer::OnSend(NetSessionID sessionID, int sendSize){}
 
-void server_baby::LoginServer::OnMonitor(const MonitoringInfo* const info)
+void MyNetwork::LoginServer::OnMonitor(const MonitoringInfo* const info)
 { 
     HardwareMonitor::CpuUsageForProcessor::GetInstance()->UpdateCpuTime();
     ProcessMonitor::CpuUsageForProcess::GetInstance()->UpdateCpuTime();
@@ -128,12 +128,12 @@ void server_baby::LoginServer::OnMonitor(const MonitoringInfo* const info)
     SystemLogger::GetInstance()->Console(L"LoginServer", LEVEL_DEBUG, L"Session Count : %d", info->sessionCount_);
 }
 
-void server_baby::LoginServer::DisconnectAbnormalPlayer(NetSessionID ID)
+void MyNetwork::LoginServer::DisconnectAbnormalPlayer(NetSessionID ID)
 {
 	Disconnect(ID);
 }
 
-bool server_baby::LoginServer::ReleasePlayer(NetSessionID ID)
+bool MyNetwork::LoginServer::ReleasePlayer(NetSessionID ID)
 {
     Player* player = nullptr;
     if (!connectedMap_.Find_SharedLock(&player, ID.total_))
@@ -144,7 +144,7 @@ bool server_baby::LoginServer::ReleasePlayer(NetSessionID ID)
     return true;
 }
 
-DWORD __stdcall server_baby::LoginServer::RedisThread(LPVOID arg)
+DWORD __stdcall MyNetwork::LoginServer::RedisThread(LPVOID arg)
 {
 	LoginServer* server = (LoginServer*)arg;
 

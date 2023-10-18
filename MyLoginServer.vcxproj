@@ -277,6 +277,7 @@
     <ClInclude Include="Player\Player.h" />
     <ClInclude Include="Player\PlayerMap.h" />
     <ClInclude Include="Player\PlayerMapWithLock.h" />
+    <ClInclude Include="Player\PlayerMap_LoadBalanced.h" />
     <ClInclude Include="RedisJob.h" />
   </ItemGroup>
   <ItemGroup>

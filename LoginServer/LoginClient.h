@@ -2,7 +2,7 @@
 #include "../NetRoot/LanClient/LanClient.h"
 #include "../MonitorProtocol.h"
 
-namespace server_baby
+namespace MyNetwork
 {
 	class LoginClient : public LanClient
 	{

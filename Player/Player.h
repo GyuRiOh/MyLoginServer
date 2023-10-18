@@ -4,7 +4,7 @@
 #include "../PacketStruct.h"
 
 using namespace std;
-namespace server_baby
+namespace MyNetwork
 {
 	class Player
 	{
@@ -34,7 +34,7 @@ namespace server_baby
 		INT64 accountNum_;
 		NetSessionID sessionID_;
 		bool isDestroyReserved_;
-		static server_baby::MemTLS<Player>* playerPool_;
+		static MyNetwork::MemTLS<Player>* playerPool_;
 	};
 
 	inline int Player::GetUsedCount()
@@ -75,14 +75,14 @@ namespace server_baby
 		accountNum_ = num;
 	}
 
-	inline void server_baby::Player::Initialize(const NetSessionID NetSessionID)
+	inline void MyNetwork::Player::Initialize(const NetSessionID NetSessionID)
 	{
 		accountNum_ = NULL;
 		sessionID_ = NetSessionID;
 		isDestroyReserved_ = false;
 	}
 
-	inline void server_baby::Player::Destroy()
+	inline void MyNetwork::Player::Destroy()
 	{
 		accountNum_ = NULL;
 		sessionID_ = 0;

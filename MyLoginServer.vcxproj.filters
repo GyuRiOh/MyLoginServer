@@ -449,6 +449,9 @@
     <ClInclude Include="Player\PlayerMapWithLock.h">
       <Filter>LoginServer</Filter>
     </ClInclude>
+    <ClInclude Include="Player\PlayerMap_LoadBalanced.h">
+      <Filter>LoginServer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="NetRoot\Common\libmysql.dll">

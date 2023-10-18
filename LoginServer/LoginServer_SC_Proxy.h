@@ -2,7 +2,7 @@
 #include "../NetRoot/NetServer/NetSessionID.h"
 #include "LoginServer.h"
 
-namespace server_baby
+namespace MyNetwork
 {
 	class LoginServer_SC_Proxy
 	{
