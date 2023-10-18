@@ -74,6 +74,12 @@ namespace MyNetwork
 				L"SELECT userid, usernick FROM accountdb.account WHERE accountno = %d;", accountNo);
 			MYSQL_ROW result = server_->dbConnector_->FetchRow();
 
+			//DB에 세션 키 저장
+			server_->dbConnector_->Query_Save(
+				L"UPDATE accountdb.sessionkey SET sessionkey.sessionkey = %s WHERE accountno = %d",
+				sessionKey,
+				accountNo);
+
 			size_t ret = 0;
 			mbstowcs_s(&ret, job->ID, 20, result[0], 20);
 			mbstowcs_s(&ret, job->nickName, 20, result[1], 20);
